@@ -2141,6 +2141,18 @@ const docTemplate = `{
                 "active": {
                     "type": "boolean"
                 },
+                "category": {
+                    "type": "string",
+                    "enum": [
+                        "Distribution",
+                        "Patent",
+                        "Internal",
+                        "Contractual",
+                        "Export Control",
+                        "General"
+                    ],
+                    "example": "Distribution"
+                },
                 "classification": {
                     "type": "string",
                     "enum": [
@@ -2325,50 +2337,13 @@ const docTemplate = `{
             }
         },
         "models.ObligationPATCHRequestJSONSchema": {
-            "type": "object",
-            "properties": {
-                "active": {
-                    "type": "boolean",
-                    "example": true
-                },
-                "classification": {
-                    "type": "string",
-                    "enum": [
-                        "green",
-                        "white",
-                        "yellow",
-                        "red"
-                    ]
-                },
-                "comment": {
-                    "type": "string",
-                    "example": "This is a comment."
-                },
-                "modifications": {
-                    "type": "boolean"
-                },
-                "text": {
-                    "type": "string",
-                    "example": "Source code be made available when distributing the software."
-                },
-                "text_updatable": {
-                    "type": "boolean"
-                },
-                "type": {
-                    "type": "string",
-                    "enum": [
-                        "obligation",
-                        "restriction",
-                        "risk",
-                        "right"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "models.ObligationPOSTRequestJSONSchema": {
             "type": "object",
             "required": [
                 "active",
+                "category",
                 "classification",
                 "comment",
                 "modifications",
@@ -2381,6 +2356,18 @@ const docTemplate = `{
                 "active": {
                     "type": "boolean",
                     "example": true
+                },
+                "category": {
+                    "type": "string",
+                    "enum": [
+                        "Distribution",
+                        "Patent",
+                        "Internal",
+                        "Contractual",
+                        "Export Control",
+                        "General"
+                    ],
+                    "example": "Distribution"
                 },
                 "classification": {
                     "type": "string",
@@ -2474,6 +2461,18 @@ const docTemplate = `{
                 "status": {
                     "type": "integer",
                     "example": 200
+                }
+            }
+        },
+        "models.OptionalData-string": {
+            "type": "object",
+            "properties": {
+                "isDefined": {
+                    "description": "This is set to true if corresponding key is present in json object",
+                    "type": "boolean"
+                },
+                "value": {
+                    "type": "string"
                 }
             }
         },

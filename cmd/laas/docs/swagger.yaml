@@ -324,6 +324,16 @@ definitions:
     properties:
       active:
         type: boolean
+      category:
+        enum:
+        - Distribution
+        - Patent
+        - Internal
+        - Contractual
+        - Export Control
+        - General
+        example: Distribution
+        type: string
       classification:
         enum:
         - green
@@ -460,40 +470,22 @@ definitions:
         type: string
     type: object
   models.ObligationPATCHRequestJSONSchema:
-    properties:
-      active:
-        example: true
-        type: boolean
-      classification:
-        enum:
-        - green
-        - white
-        - yellow
-        - red
-        type: string
-      comment:
-        example: This is a comment.
-        type: string
-      modifications:
-        type: boolean
-      text:
-        example: Source code be made available when distributing the software.
-        type: string
-      text_updatable:
-        type: boolean
-      type:
-        enum:
-        - obligation
-        - restriction
-        - risk
-        - right
-        type: string
     type: object
   models.ObligationPOSTRequestJSONSchema:
     properties:
       active:
         example: true
         type: boolean
+      category:
+        enum:
+        - Distribution
+        - Patent
+        - Internal
+        - Contractual
+        - Export Control
+        - General
+        example: Distribution
+        type: string
       classification:
         enum:
         - green
@@ -527,6 +519,7 @@ definitions:
         type: string
     required:
     - active
+    - category
     - classification
     - comment
     - modifications
@@ -569,6 +562,14 @@ definitions:
       status:
         example: 200
         type: integer
+    type: object
+  models.OptionalData-string:
+    properties:
+      isDefined:
+        description: This is set to true if corresponding key is present in json object
+        type: boolean
+      value:
+        type: string
     type: object
   models.PaginationMeta:
     properties:
